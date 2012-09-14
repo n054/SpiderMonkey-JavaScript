@@ -5,14 +5,10 @@
     describe("SpiderMonkey", function () {
 
         beforeEach(function () {
-            this.spiderMonkey = new SpiderMonkey();
+            this.spiderMonkey = window.SpiderMonkey;
         });
 
-        it("should be instantiable", function () {
-            expect(this.spiderMonkey).toBeTruthy();
-        });
-
-        describe("accept", function () {
+        describe("validate", function () {
 
             it("should be a function", function () {
                 expect(_.isFunction(this.spiderMonkey.validate)).toBeTruthy();

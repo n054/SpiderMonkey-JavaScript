@@ -1,18 +1,20 @@
-function SpiderMonkey() {
+window.SpiderMonkey = (function(){
 
     "use strict";
 
-    this.validate = function (testString) {
+    var validate, bracketsHash;
 
-        var stack, bracketsHash, testCollection, cancelled;
+    bracketsHash = {
+        "}":"{",
+        "]":"[",
+        ")":"("
+    };
+
+    validate = function (testString) {
+
+        var stack, testCollection, cancelled;
 
         stack = new Backbone.Collection();
-
-        bracketsHash = {
-            "}":"{",
-            "]":"[",
-            ")":"("
-        };
 
         testCollection = testString.split("");
 
@@ -26,11 +28,15 @@ function SpiderMonkey() {
                         cancelled = true;
                     }
                 } else {
-                    stack.push( {character : character});
+                    stack.push({character:character});
                 }
             }
         );
 
         return !cancelled && stack.length === 0;
     };
-}
+
+    return {
+        validate:validate
+    }
+})();
