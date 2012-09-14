@@ -1,8 +1,8 @@
-function Klammeraffe() {
+function SpiderMonkey() {
 
     "use strict";
 
-    this.check = function (testString) {
+    this.validate = function (testString) {
 
         var stack, bracketsHash, testCollection, cancelled;
 
